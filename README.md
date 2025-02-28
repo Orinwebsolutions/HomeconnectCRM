@@ -49,17 +49,18 @@ Before running the server, you need to set up the database and apply migrations:
    python manage.py migrate
    ```
 
-2. **Seed the initial roles and data into the database:**
+2. **Create a superuser to access the Django Admin:**
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+3. **Seed the initial roles and data into the database:**
 
    ```bash
    python manage.py seed_roles
    python manage.py seed_data
-   ```
-
-3. **Create a superuser to access the Django Admin:**
-
-   ```bash
-   python manage.py createsuperuser
+   python manage.py seed_agents
    ```
 
 ### Running the Development Server

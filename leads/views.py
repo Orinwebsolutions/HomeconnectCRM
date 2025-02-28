@@ -9,10 +9,7 @@ from agents.models import Agent
 from leads.models import LeadStatus
 from .serializers import LeadSerializer
 from rest_framework.permissions import BasePermission
-import logging
 
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 LEAD_TRANSITIONS = {
     "new": ["assigned"],
@@ -52,7 +49,6 @@ def get_lead(request, pk):
 # API view for creating a lead
 @api_view(['POST'])
 def create_lead(request):
-    logger.info(f"create_lead")
     serializer = LeadSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
