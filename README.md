@@ -12,7 +12,6 @@ Follow these steps to set up and run the project locally.
 - Python 3.x
 - Django 3.x or higher
 - Django Rest Framework
-- `django-filter` for advanced filtering
 - PostgreSQL or any other preferred database (Make sure to update the database settings in `settings.py` if needed).
 
 ### Installation
