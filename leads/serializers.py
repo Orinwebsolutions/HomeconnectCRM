@@ -4,10 +4,6 @@ from rest_framework import serializers
 from .models import Lead
 from agents.models import Agent
 from leads.models import LeadSource
-# import logging
-
-# logger = logging.getLogger(__name__)
-# logging.basicConfig(filename='myapp.log', level=logging.INFO)
 
 class LeadSerializer(serializers.ModelSerializer):
     email = serializers.CharField(validators=[EmailValidator(message="Invalid email format.")])

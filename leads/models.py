@@ -3,11 +3,6 @@ from agents.models import Agent
 from property.models import Property
 from django.core.exceptions import ValidationError
 
-import logging
-
-logger = logging.getLogger(__name__)
-logging.basicConfig(filename='myapp.log', level=logging.INFO)
-
 
 class LeadSource(models.Model):
     name = models.CharField(max_length=100)
