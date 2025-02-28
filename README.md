@@ -1,5 +1,3 @@
-Sure! Here's the properly formatted version of your `README.md` file:
-
 ```markdown
 # Django Leads API
 
