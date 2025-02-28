@@ -23,11 +23,11 @@ class Command(BaseCommand):
                 
         lead_status = [
             {"name": "new", "description": "Lead is newly created"},
-            {"name": "assigned", "description": "Assigned to agent"},
             {"name": "unassigned", "description": "Unassigned from agent"},
-            {"name": "Closed", "description": "Lead is no longer being pursued"},
-            {"name": "Won", "description": "Unassigned from agent"},
-            {"name": "Lost", "description": "Lead has been lost"},
+            {"name": "assigned", "description": "Assigned to agent"},
+            {"name": "won", "description": "Unassigned from agent"},
+            {"name": "lost", "description": "Lead has been lost"},
+            {"name": "closed", "description": "Lead is no longer being pursued"},
         ]
         
         for lead_state in lead_status:
