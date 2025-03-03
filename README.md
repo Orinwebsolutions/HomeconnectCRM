@@ -68,6 +68,14 @@ Once your database is set up, you can run the development server:
 python manage.py runserver
 ```
 
+### Note : On windows you might be difficult of running virtual environment try below steps for it.
+![alt text](https://github.com/Orinwebsolutions/HomeconnectCRM/blob/main/windows-error.png?raw=true)
+
+Try running this(This is to temporally unrestricted policy for current terminal )
+```bash
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
+```
+
 The API should now be available at `http://127.0.0.1:8000/`.
 ```
 
