@@ -57,6 +57,7 @@ Before running the server, you need to set up the database and apply migrations:
    python manage.py seed_roles
    python manage.py seed_data
    python manage.py seed_agents
+   python manage.py seed_property_data
    ```
 
 ### Running the Development Server

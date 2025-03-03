@@ -11,15 +11,6 @@ from .serializers import LeadSerializer
 from rest_framework.permissions import BasePermission
 
 
-LEAD_TRANSITIONS = {
-    "new": ["assigned"],
-    "unassigned": ["assigned"],
-    "assigned": ["won", "lost"],
-    "won": ["closed"],
-    "lost": ["closed"],
-    "closed": ["closed"]
-}
-
 class CanAssignLead(BasePermission):
     def has_permission(self, request, view):
         app_name = apps.get_containing_app_config(view.__module__).name
@@ -62,20 +53,6 @@ def update_lead(request, pk):
         lead = Lead.objects.get(pk=pk)
     except Lead.DoesNotExist:
         return Response({"error": "Lead not found"}, status=status.HTTP_404_NOT_FOUND)
-    
-    current_status = lead.status.name.strip().lower()
-    status_id = request.data.get("status")
-    new_status = LeadStatus.objects.filter(id=status_id).first()
-        
-    # Validate status transition only if the status is changing
-    if status_id and new_status != current_status and LeadStatus.objects.filter(id=status_id).exists():
-        allowed_transitions = LEAD_TRANSITIONS.get(current_status, [])
-
-        if new_status.name.strip().lower() not in allowed_transitions:
-            return Response(
-                {"error": f"Invalid transition: Cannot move from {current_status} to {new_status.name}. Can switch to {allowed_transitions}"},
-                status=status.HTTP_400_BAD_REQUEST
-            )
 
     serializer = LeadSerializer(lead, data=request.data, partial=True)
     if serializer.is_valid():
