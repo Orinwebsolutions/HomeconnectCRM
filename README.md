@@ -84,4 +84,4 @@ ER diagram
 https://www.figma.com/board/kVDjlMPlDtHHdj6FnH2Tml/Home-connect-ER?node-id=0-1&t=XFD41EtAbgIPtHSE-1
 
 
-This version is well-structured and should make it easy for users to follow the installation and setup steps. Reach out [me](mailto:(amilapriyankara16@gmail.com))  further adjustments!
+This version is well-structured and should make it easy for users to follow the installation and setup steps. Reach out [me (amilapriyankara16@gmail.com)](mailto:(amilapriyankara16@gmail.com))  further adjustments!
