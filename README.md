@@ -68,7 +68,7 @@ python manage.py runserver
 ```
 
 The API should now be available at `http://127.0.0.1:8000/`.
-```
+
 
 ### Note : On windows you might be difficult of running virtual environment try below steps for it.
 ![alt text](https://github.com/Orinwebsolutions/HomeconnectCRM/blob/main/windows-error.png?raw=true)
@@ -84,3 +84,4 @@ https://www.figma.com/board/kVDjlMPlDtHHdj6FnH2Tml/Home-connect-ER?node-id=0-1&t
 
 
 This version is well-structured and should make it easy for users to follow the installation and setup steps. Reach out [me (amilapriyankara16@gmail.com)](mailto:(amilapriyankara16@gmail.com))  further adjustments!
+```
