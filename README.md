@@ -78,7 +78,7 @@ Try running this(This is to temporally unrestricted policy for current terminal 
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
 ```
 
-ER diagram
+Use case diagram
 
 https://www.figma.com/board/kVDjlMPlDtHHdj6FnH2Tml/Home-connect-ER?node-id=0-1&t=XFD41EtAbgIPtHSE-1
 
