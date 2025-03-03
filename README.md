@@ -82,5 +82,9 @@ Use case diagram
 
 https://www.figma.com/board/kVDjlMPlDtHHdj6FnH2Tml/Home-connect-ER?node-id=0-1&t=XFD41EtAbgIPtHSE-1
 
+ER diagram
+
+![alt text](https://github.com/Orinwebsolutions/HomeconnectCRM/blob/main/Home-connect-ER.png?raw=true)
+
 
 This version is well-structured and should make it easy for users to follow the installation and setup steps. Reach out [me (amilapriyankara16@gmail.com)](mailto:(amilapriyankara16@gmail.com))  further adjustments!
