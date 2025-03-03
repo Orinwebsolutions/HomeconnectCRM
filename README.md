@@ -1,4 +1,3 @@
-```markdown
 # Django Leads API
 
 This project provides an API for managing and filtering leads, built with Django and Django Rest Framework (DRF). It includes JWT authentication for secure access, and the ability to filter leads by various attributes such as status, agent, source, and date range.
