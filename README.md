@@ -77,12 +77,17 @@ Try running this(This is to temporally unrestricted policy for current terminal 
 ```bash
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
 ```
+### External documntation
 
-Use case diagram
+#### API documentation
+
+https://documenter.getpostman.com/view/32123668/2sAYdin9b9
+
+#### Use case diagram
 
 https://www.figma.com/board/kVDjlMPlDtHHdj6FnH2Tml/Home-connect-ER?node-id=0-1&t=XFD41EtAbgIPtHSE-1
 
-ER diagram
+#### ER diagram
 
 ![alt text](https://github.com/Orinwebsolutions/HomeconnectCRM/blob/main/Home-connect-ER.png?raw=true)
 
