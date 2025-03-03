@@ -77,7 +77,7 @@ Try running this(This is to temporally unrestricted policy for current terminal 
 ```bash
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
 ```
-### External documntation
+### External documentation
 
 #### API documentation
 
