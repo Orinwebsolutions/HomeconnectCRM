@@ -69,6 +69,7 @@ def lead_assign(request, pk):
     except Lead.DoesNotExist:
         return Response({"error": "Lead not found"}, status=status.HTTP_404_NOT_FOUND)
     
+    # Need to fix problem with new status list
     if lead.status.name.lower() not in ["new", "unassigned"]:
         return Response({"error": "Lead can only be assigned if its status is 'new' or 'unassigned'."},
                         status=status.HTTP_400_BAD_REQUEST)
@@ -85,3 +86,8 @@ def lead_assign(request, pk):
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['POST'])
+def cancel_lead(request, pk):
+    pass
+    # Need to implement rest of the cancel stage functionality
