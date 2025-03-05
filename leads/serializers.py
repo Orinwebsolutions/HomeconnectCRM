@@ -12,9 +12,8 @@ LEAD_TRANSITIONS = {
     "unassigned": ["assigned"],
     "assigned": ["won", "lost"],
     "won": ["reservation"],
-    "reservation": ["reserved", "cancel"],
-    "cancel": ["assigned"],
-    "reserved": ["Legal finalize"],
+    "reservation": ["reserved"],
+    "reserved": ["Legal finalize", "assigned"],
     "Legal finalize": ["complete"],
     "complete": ["closed"],
     "closed": ["closed"]

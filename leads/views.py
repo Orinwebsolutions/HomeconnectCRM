@@ -69,7 +69,6 @@ def lead_assign(request, pk):
     except Lead.DoesNotExist:
         return Response({"error": "Lead not found"}, status=status.HTTP_404_NOT_FOUND)
     
-    # Need to fix problem with new status list
     if lead.status.name.lower() not in ["new", "unassigned"]:
         return Response({"error": "Lead can only be assigned if its status is 'new' or 'unassigned'."},
                         status=status.HTTP_400_BAD_REQUEST)
@@ -79,15 +78,33 @@ def lead_assign(request, pk):
     if not assigned_to or not Agent.objects.filter(id=assigned_to).exists():
         return Response({"error": "Agent ID is incorrect. Please validate and try again."}, 
                         status=status.HTTP_400_BAD_REQUEST)
+        
+    status = LeadStatus.objects.filter(name='assigned').first()
 
-    allowed_fields = {"assigned_to": assigned_to, "status" : 3}
+    allowed_fields = {"assigned_to": assigned_to, "status" : status.id}
     serializer = LeadSerializer(lead, data=allowed_fields, partial=True)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 def cancel_lead(request, pk):
-    pass
-    # Need to implement rest of the cancel stage functionality
+    try:
+        lead = Lead.objects.get(pk=pk)
+    except Lead.DoesNotExist:
+        return Response({"error": "Lead not found"}, status=status.HTTP_404_NOT_FOUND)
+    
+    if lead.status.name.lower() not in ["reserved"]:
+        return Response({"error": "Lead only can cancel if its current status is 'reservation'."},
+                        status=status.HTTP_400_BAD_REQUEST)
+        
+    lead_status = LeadStatus.objects.filter(name='assigned').first()
+
+    allowed_fields = {"status" : lead_status.id}
+    serializer = LeadSerializer(lead, data=allowed_fields, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
