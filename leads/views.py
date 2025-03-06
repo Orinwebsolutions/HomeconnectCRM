@@ -79,9 +79,9 @@ def lead_assign(request, pk):
         return Response({"error": "Agent ID is incorrect. Please validate and try again."}, 
                         status=status.HTTP_400_BAD_REQUEST)
         
-    status = LeadStatus.objects.filter(name='assigned').first()
+    lead_status = LeadStatus.objects.filter(name='assigned').first()
 
-    allowed_fields = {"assigned_to": assigned_to, "status" : status.id}
+    allowed_fields = {"assigned_to": assigned_to, "status" : lead_status.id}
     serializer = LeadSerializer(lead, data=allowed_fields, partial=True)
     if serializer.is_valid():
         serializer.save()

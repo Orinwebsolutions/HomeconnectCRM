@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.utils import timezone  
+from django.utils import timezone
     
 class Property(models.Model):
     name = models.CharField(max_length=50)
@@ -22,6 +22,10 @@ class Reservation(models.Model):
     contract_signed = models.BooleanField(default=False)
     expected_close_date = models.DateTimeField()
     property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name="reservations", null=True)
+    lead = models.ForeignKey("leads.lead", on_delete=models.CASCADE, related_name="reservations_lead", null=True)
+    # lead = models.ForeignKey(Leads,.... This line change to we receive "initialized module 'leads.models' (most likely due to a circular import)"
+    # So mitigate above error. Use a string-based reference ("app.ModelName") => "leads.lead" instead of direct imports.
+    # "leads.Lead" tells Django not to import Lead immediately but to resolve it after all models are loaded.
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

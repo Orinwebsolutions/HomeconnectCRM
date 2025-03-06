@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Property
+from leads.models import Lead
 from property.models import Reservation 
         
         
@@ -16,10 +17,9 @@ class PropertySerializer(serializers.ModelSerializer):
         # Create the Property instance
         return super().create(validated_data)   
     
-    
-    
 class ReservationSerializer(serializers.ModelSerializer):
     property = serializers.PrimaryKeyRelatedField(queryset=Property.objects.all())
+    lead = serializers.PrimaryKeyRelatedField(queryset=Lead.objects.all())
     class Meta:
         model = Reservation
         fields = '__all__'       
