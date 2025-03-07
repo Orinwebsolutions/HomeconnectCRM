@@ -18,7 +18,6 @@ class PropertySerializer(serializers.ModelSerializer):
         return super().create(validated_data)   
     
 class ReservationSerializer(serializers.ModelSerializer):
-    property = serializers.PrimaryKeyRelatedField(queryset=Property.objects.all())
     lead = serializers.PrimaryKeyRelatedField(queryset=Lead.objects.all())
     class Meta:
         model = Reservation

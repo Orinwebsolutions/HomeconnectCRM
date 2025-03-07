@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
     
 class Property(models.Model):
     name = models.CharField(max_length=50)
@@ -16,12 +17,17 @@ class Property(models.Model):
     
     
 class Reservation(models.Model):
+    class ReservationStatus(models.IntegerChoices):
+        PENDING = 1, _('Reservation Pending')
+        CANCEL = 2, _('Reservation Cancel')
+        FINAL = 3, _('Reservation Final')
+        
     name = models.CharField(max_length=50)
     legal_note = models.TextField(blank=True)
     reservation_fee = models.FloatField(default=0.0)
     contract_signed = models.BooleanField(default=False)
+    status = models.CharField(max_length=1, choices=ReservationStatus, default=ReservationStatus.PENDING )
     expected_close_date = models.DateTimeField()
-    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name="reservations", null=True)
     lead = models.ForeignKey("leads.lead", on_delete=models.CASCADE, related_name="reservations_lead", null=True)
     # lead = models.ForeignKey(Leads,.... This line change to we receive "initialized module 'leads.models' (most likely due to a circular import)"
     # So mitigate above error. Use a string-based reference ("app.ModelName") => "leads.lead" instead of direct imports.

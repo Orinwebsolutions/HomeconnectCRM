@@ -69,19 +69,22 @@ def lead_assign(request, pk):
     except Lead.DoesNotExist:
         return Response({"error": "Lead not found"}, status=status.HTTP_404_NOT_FOUND)
     
-    if lead.status.name.lower() not in ["new", "unassigned"]:
-        return Response({"error": "Lead can only be assigned if its status is 'new' or 'unassigned'."},
-                        status=status.HTTP_400_BAD_REQUEST)
+    # if lead.status.name.lower() not in ["new", "unassigned"]:
+    #     return Response({"error": "Lead can only be assigned if its status is 'new' or 'unassigned'."},
+    #                     status=status.HTTP_400_BAD_REQUEST)
 
     assigned_to = request.data.get("assigned_to")
 
     if not assigned_to or not Agent.objects.filter(id=assigned_to).exists():
         return Response({"error": "Agent ID is incorrect. Please validate and try again."}, 
                         status=status.HTTP_400_BAD_REQUEST)
-        
-    lead_status = LeadStatus.objects.filter(name='assigned').first()
+    if lead.status.name.lower() in ["new", "unassigned"]:    
+        lead_status = LeadStatus.objects.filter(name='assigned').first()
+        allowed_fields = {"assigned_to": assigned_to, "status" : lead_status.id}
+    else:
+        allowed_fields = {"assigned_to": assigned_to}
 
-    allowed_fields = {"assigned_to": assigned_to, "status" : lead_status.id}
+    # allowed_fields = {"assigned_to": assigned_to, "status" : lead_status.id}
     serializer = LeadSerializer(lead, data=allowed_fields, partial=True)
     if serializer.is_valid():
         serializer.save()
@@ -90,17 +93,16 @@ def lead_assign(request, pk):
 
 
 @api_view(['POST'])
-def cancel_lead(request, pk):
+def change_status(request, pk):
+    # pass
     try:
         lead = Lead.objects.get(pk=pk)
     except Lead.DoesNotExist:
         return Response({"error": "Lead not found"}, status=status.HTTP_404_NOT_FOUND)
     
-    if lead.status.name.lower() not in ["reserved"]:
-        return Response({"error": "Lead only can cancel if its current status is 'reservation'."},
-                        status=status.HTTP_400_BAD_REQUEST)
+    new_status = request.data.get("status")
         
-    lead_status = LeadStatus.objects.filter(name='assigned').first()
+    lead_status = LeadStatus.objects.filter(id=new_status).first()
 
     allowed_fields = {"status" : lead_status.id}
     serializer = LeadSerializer(lead, data=allowed_fields, partial=True)
