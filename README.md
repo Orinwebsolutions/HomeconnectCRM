@@ -82,7 +82,7 @@ Set-ExecutionPolicy -Scope Process -ExecutionPolicy Unrestricted
 
 #### API documentation
 
-https://documenter.getpostman.com/view/32123668/2sAYdin9b9
+https://documenter.getpostman.com/view/43001693/2sAYk7SizV
 
 #### Use case diagram
 
