@@ -18,8 +18,8 @@ Follow these steps to set up and run the project locally.
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository_url>
-   cd <project_directory>
+   git clone git@github.com:Orinwebsolutions/HomeconnectCRM.git
+   cd HomeconnectCRM
    ```
 
 2. **Create a virtual environment:**
